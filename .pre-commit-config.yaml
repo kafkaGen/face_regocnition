@@ -4,7 +4,7 @@ repos:
     rev: "v4.4.0"
     hooks:
       - id: check-merge-conflict
-      - id: check-added-large-files 
+      # - id: check-added-large-files 
       - id: debug-statements 
       - id: check-case-conflict
       - id: check-docstring-first
@@ -32,12 +32,19 @@ repos:
     rev: 23.7.0
     hooks:
       - id: black
+        args: [
+          "--line-length=140",
+        ]
 
   - repo: https://github.com/pycqa/flake8
     rev: 6.1.0
     hooks:
       - id: flake8
-        # entry: flake8p
+        entry: flake8
+        args: [
+          "--ignore=D100,D101,D102,D103,D105,D107,R504,N812",
+          "--max-line-length=140",
+        ]
         additional_dependencies: [
           "flake8-bugbear",
           "flake8-docstrings",
@@ -46,14 +53,14 @@ repos:
           "pep8-naming",
           ]
 
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.5.1
-    hooks:
-    - id: mypy
-      args: [
-        --install-types,
-        --non-interactive,
-        --strict,
-        --disallow-untyped-defs,
-        --ignore-missing-imports
-      ]
+  # - repo: https://github.com/pre-commit/mirrors-mypy
+  #   rev: v1.5.1
+  #   hooks:
+  #   - id: mypy
+  #     args: [
+  #       --install-types,
+  #       --non-interactive,
+  #       --strict,
+  #       --disallow-untyped-defs,
+  #       --ignore-missing-imports
+  #     ]

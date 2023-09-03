@@ -1,3 +1,5 @@
 notebooks/
 data/
 .micromamba/
+*__pycache__*
+.mypy_cache/
